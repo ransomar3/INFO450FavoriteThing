@@ -21,5 +21,9 @@ FavoriteThing::FavoriteThing(string n, string g, int r, int y)
 
 void FavoriteThing::Display()
 {
-
+	cout << "My favorite thing is video games!\n" << endl;
+	cout << "The name of it is: " << name << endl;
+	cout <<  "It is a" << genre << " game.\n" << endl;
+	cout << "My rating: " << rating << endl;
+	cout << "It was made in:\n " << year << endl;
 }
