@@ -1,20 +1,21 @@
-#include <iostream>
 #include "stdafx.h"
+#include <string>
 #include "FavoriteThing.h"
+#include <iostream>
 using namespace std;
 
 FavoriteThing::FavoriteThing()
 {
-	name = "";
-	genre = "";
+	strcpy_s(myName, "");
+	strcpy_s(myGenre, "");
 	rating = 0;
 	year = 2017;
 }
 
-FavoriteThing::FavoriteThing(string n, string g, int r, int y)
+FavoriteThing::FavoriteThing(char mName[], char mGenre[], int r, int y)
 {
-	name = n;
-	genre = g;
+	strcpy_s(myName, mName);
+	strcpy_s(myGenre, mGenre);
 	rating = r;
 	year = y;
 }
@@ -22,8 +23,8 @@ FavoriteThing::FavoriteThing(string n, string g, int r, int y)
 void FavoriteThing::Display()
 {
 	cout << "My favorite thing is video games!\n" << endl;
-	cout << "The name of it is: " << name << endl;
-	cout <<  "It is a" << genre << " game.\n" << endl;
+	cout << "The name of it is: " << myName << endl;
+	cout <<  "It is a(n) " << myGenre << " game." << endl;
 	cout << "My rating: " << rating << endl;
-	cout << "It was made in:\n " << year << endl;
+	cout << "It was made in: " << year << endl;
 }
