@@ -2,17 +2,22 @@
 #include <string>
 #include "stdafx.h"
 #include <iostream>
+#include <fstream>
+#include <stdio.h>
 using namespace std;
 
 class FavoriteThing
 {
 private:
-	char myName[75];
-	char myGenre[75];
+	string name;
+	string genre;
 	int rating;
 	int year;
 public:
 	FavoriteThing();
-	FavoriteThing(char mName[], char mGenre[], int r, int y);
+	FavoriteThing(string n, string g, int r, int y);
 	void Display();
+	int CaptureThing();
+
+	friend ofstream& operator<<(ofstream &fs, FavoriteThing *thing);
 };
