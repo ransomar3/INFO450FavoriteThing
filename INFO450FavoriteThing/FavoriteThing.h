@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
-#include "stdafx.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include "stdafx.h"
 using namespace std;
 
 class FavoriteThing

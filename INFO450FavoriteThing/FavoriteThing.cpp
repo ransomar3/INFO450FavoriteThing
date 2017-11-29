@@ -1,9 +1,9 @@
-#include "stdafx.h"
 #include <string>
-#include "FavoriteThing.h"
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include "stdafx.h"
+#include "FavoriteThing.h"
 using namespace std;
 
 FavoriteThing::FavoriteThing()

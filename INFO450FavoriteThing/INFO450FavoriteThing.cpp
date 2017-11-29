@@ -2,53 +2,57 @@
 //
 
 #include <iostream>
-#include "stdafx.h"
-#include "FavoriteThing.h"
 #include <string>
 #include <fstream>
+#include <stdio.h>
+#include "stdafx.h"
+#include "FavoriteThing.h"
+
 using namespace std;
 
-const int LISTSIZE = 75;
+const int THINGSIZE = 100;
 
 int main()
 {
 	FavoriteThing **myThing;
 	int count = 0;
 	int t;
-	string response = "Y";
+	string input = "Y";
 
-	myThing = new FavoriteThing*[LISTSIZE];
+	myThing = new FavoriteThing*[THINGSIZE];
 
-	ifstream infile("c:\\users\\adamransom\\Documents\\thing.txt");
-	if (infile.good())
+	// Read items to a file
+	ifstream datafile("c:\\users\\adamransom\\Documents\\thing.txt");
+	if (datafile.good())
 	{
-		while (!infile.eof())
+		while (!datafile.eof())
 		{
-		string name, genre, rating, year;
-		getline(infile, name, ',');
-		if (name.length())
+			string n, g, r, y;
+			getline(datafile, n, ',');
+			if (n.length())
 			{
-				getline(infile, genre, ',');
-				getline(infile, rating, ',');
-				getline(infile, year, ',');
-				myThing[count] = new FavoriteThing(stoi(name), stoi(genre), rating, year);
+				getline(datafile, g, ',');
+				getline(datafile, r, ',');
+				getline(datafile, y, ',');
+				myThing[count] = new FavoriteThing(n, g, stoi(r), stoi(y));
 				count++;
 			}
 		}
 	}
 
-	cout << "There are " << count << "game entries." << endl;
-	cin >> response;
+	cout << "There are " << count << " game entries." << endl;
+	cin >> input;
 
 
-	while (response == "Y" || response == "y")
+	// Count inventory items
+	while (input == "Y" || input == "y")
 	{
 		myThing[count] = new FavoriteThing();
 		if (myThing[count]->CaptureThing() == 0)
 			count++;
 
-		cout << "Enter another?" << endl;
-		cin >> response; 
+		cout << "Are you entering another?" << endl;
+		cin >> input;
 	}
 
 	for (t = 0; t < count; t++)
@@ -56,7 +60,9 @@ int main()
 		myThing[t]->CaptureThing();
 	}
 
+	// Save data entries to a text file 
 	ofstream outfile("c:\\users\\adamransom\\Documents\\thing.txt");
+
 	if (!outfile.good())
 	{
 		cout << "ERROR: Cannot open file! Try again." << endl;
@@ -67,6 +73,7 @@ int main()
 	{
 		outfile << myThing[t];
 	}
+
 	for (t = 0; t < count; t++)
 	{
 		delete myThing[t];
@@ -75,4 +82,3 @@ int main()
 
     return 0;
 }
-
