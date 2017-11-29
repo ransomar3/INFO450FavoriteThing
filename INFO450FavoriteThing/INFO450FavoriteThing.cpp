@@ -22,7 +22,7 @@ int main()
 
 	// Read items to a file
 	ifstream datafile("c:\\users\\adamransom\\Documents\\thing.txt");
-	if (datafile.good())
+	if (datafile)
 	{
 		while (!datafile.eof())
 		{
@@ -38,6 +38,8 @@ int main()
 		}
 	}
 
+	cout << "My favorite thing is video games!\n" << endl;
+	cout << "Here, you can create a list of favorite video games.\n" << endl;
 	cout << "There are " << count << " game entries. Do you want to input more?" << endl;
 	cin >> input;
 
@@ -54,13 +56,13 @@ int main()
 
 	for (t = 0; t < count; t++)
 	{
-		myThing[t]->CaptureThing();
+		myThing[t]->Display();
 	}
 
 	// Save data entries to a text file 
 	ofstream outfile("c:\\users\\adamransom\\Documents\\thing.txt");
 
-	if (!outfile.good())
+	if (!outfile)
 	{
 		cout << "ERROR: Cannot open file! Try again." << endl;
 		return -1;
@@ -70,6 +72,8 @@ int main()
 	{
 		outfile << myThing[t];
 	}
+	outfile.close();
+
 	// To clean up the memory after
 	for (t = 0; t < count; t++)
 	{

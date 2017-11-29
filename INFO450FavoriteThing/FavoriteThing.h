@@ -9,8 +9,8 @@ using namespace std;
 class FavoriteThing
 {
 private:
-	string name;
 	int rating;
+	string name;
 	string genre;
 public:
 	FavoriteThing();

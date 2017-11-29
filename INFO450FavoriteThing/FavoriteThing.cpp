@@ -9,7 +9,6 @@ using namespace std;
 void FavoriteThing::Display()
 {
 	cout << " ========= Favorite Things ========= " << endl;
-	cout << "My favorite thing: video games!\n" << endl;
 	cout << "My ranking: " <<  "#" << rating << endl;
 	cout << "The name of it is: " << name << endl;
 	cout <<  "It is a(n) " << genre << " game." << endl;
@@ -18,13 +17,15 @@ void FavoriteThing::Display()
 int FavoriteThing::CaptureThing()
 {
 	
+	cout << "What is your ranking? " << endl;
+	cin >> rating;
+	cin.ignore();
+	cin.clear();
 	cout << "Input game name: " << endl;
 	getline(cin, name);
-	cout << "What is your ranking of it? (from #1, etc.) " << endl;
-	cin >> rating; 
 	cout << "Input genre: " << endl;
 	getline(cin, genre);
-
+	
 	return 0;
 }
 
