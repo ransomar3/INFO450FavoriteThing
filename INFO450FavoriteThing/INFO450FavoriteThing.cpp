@@ -40,9 +40,8 @@ int main()
 		}
 	}
 
-	cout << "There are " << count << " game entries." << endl;
+	cout << "There are " << count << " game entries. Do you want to input more?" << endl;
 	cin >> input;
-
 
 	// Count inventory items
 	while (input == "Y" || input == "y")
