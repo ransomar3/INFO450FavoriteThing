@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include "stdafx.h"
 #include "FavoriteThing.h"
-
 using namespace std;
 
 const int THINGSIZE = 100;
@@ -27,14 +26,13 @@ int main()
 	{
 		while (!datafile.eof())
 		{
-			string n, g, r, y;
-			getline(datafile, n, ',');
-			if (n.length())
+			string name, rank, genre;
+			getline(datafile, name, ',');
+			if (name.length())
 			{
-				getline(datafile, g, ',');
-				getline(datafile, r, ',');
-				getline(datafile, y, ',');
-				myThing[count] = new FavoriteThing(n, g, stoi(r), stoi(y));
+				getline(datafile, rank, ',');
+				getline(datafile, genre, '\n');
+				myThing[count] = new FavoriteThing(name, stoi(rank), genre);
 				count++;
 			}
 		}
@@ -72,7 +70,7 @@ int main()
 	{
 		outfile << myThing[t];
 	}
-
+	// To clean up the memory after
 	for (t = 0; t < count; t++)
 	{
 		delete myThing[t];

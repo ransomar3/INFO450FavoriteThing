@@ -1,6 +1,6 @@
 #pragma once
-#include <string>
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <stdio.h>
 #include "stdafx.h"
@@ -10,12 +10,11 @@ class FavoriteThing
 {
 private:
 	string name;
-	string genre;
 	int rating;
-	int year;
+	string genre;
 public:
 	FavoriteThing();
-	FavoriteThing(string n, string g, int r, int y);
+	FavoriteThing(string n, int r, string g);
 	void Display();
 	int CaptureThing();
 
